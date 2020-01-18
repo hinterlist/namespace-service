@@ -1,0 +1,6 @@
+{
+  "ext": "ts",
+  "watch": ["src/**/*.ts"],
+  "ignore": ["*.test.ts", "*.spec.ts", "__test__.ts"],
+  "exec": "TS_NODE_FILES=true node -r ts-node/register ./src/server.ts"
+}
