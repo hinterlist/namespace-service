@@ -7,7 +7,7 @@ const app = express();
 const port = config.server.port;
 
 // Define app routes
-app.get('/newId/:namespace([a-z]+)', NewIdController);
+app.get('/newId/:namespace([a-z]{1,10})', NewIdController);
 
 setTimeout(() => {
   app.listen(port, () => {
