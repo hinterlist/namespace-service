@@ -1,10 +1,16 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import { NewIdController } from './controllers';
+import { logger, redis } from './providers';
+import config from './config';
 
 const app = express();
-const port = 3000;
+const port = config.server.port;
 
-app.get('/', (req: Request, res: Response) => res.send('Hello World!'));
+// Define app routes
+app.get('/newId/:namespace([a-z]+)', NewIdController);
 
-app.listen(port, () => {
-  console.log(`🚀 Server ready at http://www.localhost:${port}`);
-});
+setTimeout(() => {
+  app.listen(port, () => {
+    logger.info(`🚀 Server ready at http://www.localhost:${port}`);
+  });
+}, 1000);
